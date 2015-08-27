@@ -37,8 +37,8 @@ public final class ConfigController {
     public void readProperties() {
         try {
             InputStream input;
-
-            String initFilePath = "/home/panos/NetBeansProjects/diachron/integration_layer_config.properties";
+            
+            String initFilePath = "C:\\jboss-as-7.1.1.Final\\modules\\diachron\\configuration\\main\\integration_layer_config.properties";
 
             //input = this.getClass().getClassLoader().getResourceAsStream("diacrawl.properties");
 

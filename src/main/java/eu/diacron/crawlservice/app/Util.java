@@ -67,6 +67,8 @@ public final class Util {
 
         CredentialsProvider credsProvider = new BasicCredentialsProvider();
 
+        System.out.println(AuthScope.ANY_HOST + " " + AuthScope.ANY_PORT + " " + Configuration.REMOTE_CRAWLER_USERNAME + " " +
+                Configuration.REMOTE_CRAWLER_PASS);
         credsProvider.setCredentials(
                 new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT),
                 new UsernamePasswordCredentials(Configuration.REMOTE_CRAWLER_USERNAME, Configuration.REMOTE_CRAWLER_PASS));

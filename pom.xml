@@ -23,7 +23,17 @@
         </repository>
     </repositories>
 
-    <dependencies>        
+    <dependencies>    
+        <dependency>
+            <groupId>org.diachron.repair.master</groupId>
+            <artifactId>validation-repair</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.diachron.detection</groupId>
+            <artifactId>change-detection</artifactId>
+            <version>1.0</version>
+        </dependency>            
         <dependency>
            <groupId>com.openlink.virtuoso</groupId>
            <artifactId>virtjdbc4-1</artifactId>
@@ -401,7 +411,11 @@
             <artifactId>jena-fuseki</artifactId>
             <version>1.1.0</version>
         </dependency>    
-    
+  <dependency>
+	<groupId>com.google.code.gson</groupId>
+	<artifactId>gson</artifactId>
+	<version>1.7.1</version>
+  </dependency>    
     <dependency>
         <groupId>org.mortbay.jetty</groupId>
         <artifactId>jetty-embedded</artifactId>

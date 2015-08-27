@@ -33,6 +33,7 @@
         <param-name>resteasy.scan.resources</param-name>
         <param-value>false</param-value>
     </context-param>
+    <!--
     <filter>
         <filter-name>SecurityFilter</filter-name>
         <filter-class>org.apache.shiro.web.servlet.IniShiroFilter</filter-class>
@@ -41,7 +42,7 @@
             <param-value>file:///home/panos/NetBeansProjects/diachron/apache_shiro.properties</param-value>
         </init-param>
     </filter>
-<!--
+
     <filter-mapping>
         <filter-name>SecurityFilter</filter-name>
         <url-pattern>/webresources/EvaluateDispatcher</url-pattern>
