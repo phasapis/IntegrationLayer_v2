@@ -26,6 +26,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import org.athena.imis.diachron.archive.api.QueryLib;
 import org.diachron.detection.exploit.ChangesExploiter;
 import org.diachron.detection.exploit.DetChange;
 
@@ -46,6 +47,27 @@ public class DatasetResource {
     public DatasetResource() {
     }
 
+    @GET
+    @Path("/")
+    public Response getDataset() {
+        QueryLib querylib = new QueryLib();
+        try {
+            String response = querylib.listDiachronicDatasets();
+            return Response.status(Response.Status.OK).entity(response).build();
+        } catch (Exception ex) {
+            Logger.getLogger(DatasetResource.class.getName()).log(Level.SEVERE, null, ex);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error fetching the dataset").build();
+        }
+    }
+    
+    @GET
+    @Path("{id}")
+    public Response getDatasetById(@PathParam("id") String id) {
+        QueryLib querylib = new QueryLib();
+        String response = querylib.getDatasetVersionById(id);
+        return Response.status(Response.Status.OK).entity(response).build();
+    }
+    
     @GET
     @Path("{id}/changes")
     public Response getChangesBetweeenVersions(@PathParam("id") String id,
@@ -73,14 +95,6 @@ public class DatasetResource {
             Logger.getLogger(DatasetResource.class.getName()).log(Level.SEVERE, null, ex);
         }
         return Response.status(Response.Status.OK).entity(json).build();
-    }
-    /**
-     * Retrieves representation of an instance of com.diachron.integration.diachronintegrationlayer.services.complexchanges.DatasetResource
-     * @return an instance of java.lang.String
-     */
-    @GET
-    public Response getAll() {
-        return Response.status(200).entity("getAll is called").build();
     }
 
     /**
