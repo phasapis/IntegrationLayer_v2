@@ -93,6 +93,7 @@ public class DatasetResource {
             json = gson.toJson(changeSet);
         } catch (Exception ex) {
             Logger.getLogger(DatasetResource.class.getName()).log(Level.SEVERE, null, ex);
+            return Response.status(Response.Status.BAD_REQUEST).entity("Bad Request").build();
         }
         return Response.status(Response.Status.OK).entity(json).build();
     }
