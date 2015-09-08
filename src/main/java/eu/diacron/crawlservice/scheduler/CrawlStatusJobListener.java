@@ -11,6 +11,7 @@ import eu.diacron.crawlservice.app.Util;
 import eu.diacron.crawlservice.config.Configuration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import management.configuration.PropertiesManager;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.quartz.JobDataMap;
@@ -73,8 +74,9 @@ public class CrawlStatusJobListener implements JobListener {
 
                 //sent message to Topic
                 System.out.println("topicName from Producer " + crawlid);
-                String BROKER_URL = Configuration.BROKER_URL;
-                System.out.println("Configuration.BROKER_URL" + Configuration.BROKER_URL);
+                PropertiesManager properties = PropertiesManager.getPropertiesManager();
+                String BROKER_URL = properties.getPropertyValue("BROKER_URL");
+                System.out.println("Configuration.BROKER_URL" + properties.getPropertyValue("BROKER_URL"));
                 CrawlTopicProducer producer = new CrawlTopicProducer(BROKER_URL, crawlid);
                 thread(producer, false);
                 //deledeJob from scheduler context
